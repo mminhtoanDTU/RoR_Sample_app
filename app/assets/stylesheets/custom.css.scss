@@ -284,6 +284,10 @@ span.picture {
     border: 1px solid #aaa;
     padding: 10px;
 
+    &-body {
+        word-break: break-word;
+    }
+
     .btn-reply {
         margin: 7px 0;
     }

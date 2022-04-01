@@ -1,11 +1,13 @@
 <div class="reply">
   <%= link_to gravatar_for(reply.user, size: 40), reply.user %>
   <span class="user"><%= link_to reply.user.name, reply.user %></span>
-  <span class="timerastamp">
+  <div class="timerastamp">
     <%= time_ago_in_words(reply.created_at) %> ago.
-  </span>
+  </div>
   <div class="reply-body">
     <%= reply.body %>
   </div>
-  <%= link_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+  <% if logged_in?%>
+    <%= link_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+  <%end %>
 </div>

@@ -8,8 +8,10 @@
     <div class="comment-body">
       <%= comment.body %>
     </div>
-    <%= link_to 'Reply', new_micropost_comment_path(@micropost, parent_id: comment.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
-    <%= link_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+    <% if logged_in?%>
+      <%= link_to 'Reply', new_micropost_comment_path(@micropost, parent_id: comment.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
+      <%= link_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+    <% end %>
     <% if comment.replies.any? %>
       <% comment.replies.each do |reply| %> 
         <%= render partial: 'comments/reply', locals: { reply: reply } %>
