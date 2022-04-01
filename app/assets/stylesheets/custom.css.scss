@@ -259,6 +259,12 @@ input {
         padding: 5px 0;
     }
 }
+
+.post-detail {
+    .image {
+        margin-bottom: 20px;
+    }
+}
 aside {
     textarea {
         height: 100px;
@@ -270,4 +276,20 @@ span.picture {
     input {
         border: 0;
     }
+}
+
+// Comments
+.comment {
+    margin-top: 10px;
+    border: 1px solid #aaa;
+    padding: 10px;
+
+    .btn-reply {
+        margin: 7px 0;
+    }
+}
+
+//Reply
+.reply {
+    margin-left: 50px;
 }
