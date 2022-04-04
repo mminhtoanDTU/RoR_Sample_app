@@ -27,6 +27,22 @@ textarea {
         margin-bottom: 10px;
     }
 }
+
+.d-flex {
+    display: flex;
+}
+
+.gap-x {
+    gap: 0 20px;
+}
+
+.mt-1 {
+    margin-top: 4px;
+}
+
+.float-right {
+    float: right;
+}
 /* typography */
 h1,
 h2,
@@ -128,6 +144,10 @@ aside {
             margin-top: 0px;
         }
     }
+}
+
+.timestamp {
+    color: $gray-light;
 }
 .gravatar {
     float: left;
@@ -243,12 +263,7 @@ input {
         display: block;
         padding: 5px;
     }
-    .timestamp {
-        color: $gray-light;
-        display: block;
-        margin-left: 60px;
-        margin-top: 10px;
-    }
+
     .gravatar {
         float: left;
         margin-right: 10px;
@@ -261,6 +276,10 @@ input {
 }
 
 .post-detail {
+    &-container {
+        max-width: 500px;
+        margin: 0 auto;
+    }
     .image {
         margin-bottom: 20px;
     }
@@ -286,6 +305,7 @@ span.picture {
 
     &-body {
         word-break: break-word;
+        font-size: 16px;
     }
 
     .btn-reply {

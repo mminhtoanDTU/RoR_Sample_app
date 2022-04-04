@@ -1,4 +1,4 @@
-<div class="reply">
+<div class="reply mt-1">
   <%= link_to gravatar_for(reply.user, size: 40), reply.user %>
   <span class="user"><%= link_to reply.user.name, reply.user %></span>
   <div class="timerastamp">
@@ -8,6 +8,8 @@
     <%= reply.body %>
   </div>
   <% if logged_in?%>
+    <%= link_to 'Edit', edit_comment_path(reply.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
     <%= link_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
   <%end %>
+  <div id="holder-form-for-<%= reply.id %>"></div>
 </div>

@@ -3,12 +3,12 @@
 
 <%= form_with model: @micropost do |f| %>
     
-    <div class="field">
-        <%= f.text_area :content, placeholder: "Compose new micropost...", value: @micropost.content %>
+    <div class="form-group">
+        <%= f.text_area :content, placeholder: "Compose new micropost...", value: @micropost.content, class: "form-control" %>
     </div>
     <%= image_tag(@micropost.picture.url, class: "image-preview") if @micropost.picture? %>
     
-    <span class="picture">
+    <span class="picture mt-1" style="display: block">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'%>
     </span>
     <%= f.submit "Update", class: "btn btn-primary" %>
