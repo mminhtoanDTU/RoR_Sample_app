@@ -2,8 +2,10 @@
   <%= link_to gravatar_for(reply.user, size: 40), reply.user %>
   <span class="user"><%= link_to reply.user.name, reply.user %></span>
   <div class="float-right">
+    <%= link_to 'Reply', new_micropost_comment_path(reply.micropost, parent_id: reply.id),
+        remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
     <% if current_user.id === reply.user_id %>
-      <%= link_to 'Edit', edit_comment_path(reply.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
+      <%= link_to 'Edit', edit_comment_path(reply.id), remote: true, class: 'btn btn-info btn-sm btn-reply' %>
     <%end %>
     <% if reply.micropost.user_id === current_user.id || reply.user_id === current_user.id %>
       <%= link_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
@@ -12,8 +14,13 @@
   <div class="timestamp">
     <%= time_ago_in_words(reply.created_at) %> ago.
   </div>
-  <div class="comment-body">
+  <div id="holder-form-for-<%= reply.id %>" class="comment-body">
+    
     <%= reply.body %>
   </div>
-  <div id="holder-form-for-<%= reply.id %>"></div>
+  <% if reply.replies.any? %>
+    <% reply.replies.each do |reply| %> 
+      <%= render partial: 'comments/reply', locals: { reply: reply } %>
+    <% end %>
+  <% end %>
 </div>
