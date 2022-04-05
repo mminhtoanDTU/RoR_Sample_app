@@ -262,6 +262,7 @@ input {
     .content {
         display: block;
         padding: 5px;
+        font-size: 16px;
     }
 
     .gravatar {
@@ -306,6 +307,7 @@ span.picture {
     &-body {
         word-break: break-word;
         font-size: 16px;
+        margin-top: 5px;
     }
 
     .btn-reply {

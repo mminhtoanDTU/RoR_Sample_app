@@ -2,18 +2,24 @@
   <div id="comment-<%= comment.id %>" class="comment">
     <%= link_to gravatar_for(comment.user, size: 40), comment.user %>
     <span class="user"><%= link_to comment.user.name, comment.user %></span>
+    <div class="float-right">
+      <%= link_to 'Reply', new_micropost_comment_path(@micropost, parent_id: comment.id),
+      remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
+      
+      <% if current_user.id === comment.user_id %>
+        <%= link_to 'Edit', edit_comment_path(comment.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
+      <% end %>
+      <% if @micropost.user_id === current_user.id || comment.user_id === current_user.id %>
+        <%= link_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+      <% end %>
+    </div>
     <div class="timestamp">
       <%= time_ago_in_words(comment.created_at) %> ago.
     </div>
     <div class="comment-body">
       <%= comment.body %>
     </div>
-    <% if logged_in?%>
-      <%= link_to 'Reply', new_micropost_comment_path(@micropost, parent_id: comment.id), 
-      remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
-      <%= link_to 'Edit', edit_comment_path(comment.id), remote: true, class: 'btn btn-primary btn-sm btn-reply' %>
-      <%= link_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
-    <% end %>
+    
     <div id="holder-form-for-<%= comment.id %>"></div>
     <% if comment.replies.any? %>
       <% comment.replies.each do |reply| %> 

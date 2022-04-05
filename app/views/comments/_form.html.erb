@@ -2,7 +2,7 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">
         <%= f.hidden_field :micropost_id, :value => @micropost.id %>
-        <%= f.hidden_field :user_id, :value => @micropost.user.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_area :body, placeholder: "Comment...", class: "form-control"%>
     </div>
     <%= f.submit "Comment", class: "btn btn-primary" %>

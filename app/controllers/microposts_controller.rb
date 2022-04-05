@@ -3,6 +3,9 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     def show
+        if !logged_in?
+            redirect_to login_path
+        end
         @micropost =  Micropost.find(params[:id])
     end
 
